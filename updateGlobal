@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$( /usr/bin/id -u )" -ne "0" ] ; then
+ echo 'Please run using sudo.'
+ exit 1
+fi
+
+set +e
+echo -e "\t\e[92m === Global Update ===\e[0m"
+echo -e "\n\t\t \e[91m=== SNAP REFRESH ===\e[0m"
+/usr/bin/snap refresh
+echo -e "\n\t\t \e[91m=== ATP UPDATE ===\e[0m"
+/usr/bin/apt update
+echo -e "\n\t\t \e[91m=== ATP UPGRADE ===\e[0m"
+/usr/bin/apt upgrade
+echo -e "\n\t\t \e[91m=== ATP AUTOREMOVE ===\e[0m"
+/usr/bin/apt autoremove
+echo -e "\n\t\t \e[91m=== ATP AUTOCLEAN ===\e[0m"
+/usr/bin/apt autoclean
+echo -e "\n\t\t \e[91m=== ATP AUTOPURGE ===\e[0m"
+/usr/bin/apt autopurge
+echo -e "\n\e[93mUpdate Complete\e[0m"
+echo -e "\e[93mThank you for being lazy like me\e[0m"
